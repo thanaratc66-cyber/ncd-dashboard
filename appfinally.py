@@ -1375,13 +1375,13 @@ if st.session_state.current_page == "🏠 หน้าแรก":
             
             
             # 🌟 แสดงผลวิดีโอจากลิงก์ Google Drive ของคุณ (แปลงเป็น /preview แล้ว)
-            drive_video_url = "https://drive.google.com/file/d/1rHEsZIQu7u-SD0wgHoB4j-Hm5Vecwomu/view?usp=sharing&t=28.02"
+            drive_video_url = "https://drive.google.com/file/d/1rHEsZIQu7u-SD0wgHoB4j-Hm5Vecwomu/view?usp=sharing"
             st.components.v1.iframe(drive_video_url, width=None, height=350, scrolling=False)
             
             # 🌟 ลิงก์สำหรับกดเปิดดูวิดีโอเต็มจอใน Google Drive แยกต่างหาก
             st.markdown("""
                 <div style='text-align: center; margin: 10px 0 15px 0;'>
-                    <a href="https://drive.google.com/file/d/1rHEsZIQu7u-SD0wgHoB4j-Hm5Vecwomu/view?usp=sharing&t=28.02" target="_blank" style='color: #2B6CB0; font-size: 14px; font-weight: 700; text-decoration: none;'>
+                    <a href="https://drive.google.com/file/d/1rHEsZIQu7u-SD0wgHoB4j-Hm5Vecwomu/view?usp=sharing" target="_blank" style='color: #2B6CB0; font-size: 14px; font-weight: 700; text-decoration: none;'>
                         🔗 คลิกที่นี่เพื่อเปิดดูวิดีโอเต็มจอใน Google Drive
                     </a>
                 </div>
@@ -2607,7 +2607,25 @@ elif st.session_state.current_page == "คู่มือ":
         """, unsafe_allow_html=True)
     
     st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+    # --- แสดงผลคู่มือผ่านลิงก์ Google Drive โดยใช้ iframe และมีปุ่มเปิดด้านบน ---
+    drive_pdf_preview = "https://drive.google.com/file/d/16cyretacu3pO9VYIu6dZgDVfnOeBeEGz/preview"
+    drive_pdf_view = "https://drive.google.com/file/d/16cyretacu3pO9VYIu6dZgDVfnOeBeEGz/view?usp=sharing"
 
+    st.markdown(f'''
+    <div class="a4-paper-container">
+        <!-- ส่วนหัวข้อภายในกระดาษ พร้อมปุ่มกดเปิดดูในแท็บใหม่ -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #E2E8F0; padding-bottom: 15px;">
+            <h2 style="color: #1A365D; font-size: 22px; font-weight: 900; margin: 0;">เอกสารคู่มือการใช้งานระบบ</h2>
+            <a href="{drive_pdf_view}" target="_blank" style="background: #2B6CB0; color: white; padding: 8px 16px; border-radius: 50px; font-size: 13px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 10px rgba(43, 108, 176, 0.2);">
+                🔗 เปิดดูไฟล์ PDF ในแท็บใหม่
+            </a>
+        </div>
+        
+         แสดงผลหน้าเว็บ PDF ผ่าน iframe จาก Google Drive 
+        
+    ''', unsafe_allow_html=True)
+
+    st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
     # --- ตรวจสอบไฟล์ 'บทที่ 1.pdf' หากมีจะแสดงผลผ่าน PDF Viewer ถ้าไม่มีจะแสดงเนื้อหาข้อความ HTML ---
     file_path = "คู่มือการใช้งาน.pdf"
     
