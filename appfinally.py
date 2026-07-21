@@ -1365,7 +1365,36 @@ if st.session_state.current_page == "🏠 หน้าแรก":
                 </div>
             """, unsafe_allow_html=True)
             
+            # ปุ่มเปิดดูวิดีโอ (จัดกึ่งกลางและปรับสัดส่วนความกว้างให้สวยงามพอดี ไม่ยาวจนเกินไป)
+            b_left, b_mid, b_right = st.columns([0.8, 2.5, 0.8])
+            with b_mid:
+                if st.button("▶  คลิกเพื่อรับชมวิดีโอ", key="btn_video_action", use_container_width=True):
+                    st.session_state.video_clicked = True
+                    st.rerun()
+        else:
             
+            
+            # 🌟 แสดงผลวิดีโอจากลิงก์ Google Drive ของคุณ (แปลงเป็น /preview แล้ว)
+            drive_video_url = "https://drive.google.com/file/d/1rHEsZIQu7u-SD0wgHoB4j-Hm5Vecwomu/view?usp=sharing&t=28.02"
+            st.components.v1.iframe(drive_video_url, width=None, height=350, scrolling=False)
+            
+            # 🌟 ลิงก์สำหรับกดเปิดดูวิดีโอเต็มจอใน Google Drive แยกต่างหาก
+            st.markdown("""
+                <div style='text-align: center; margin: 10px 0 15px 0;'>
+                    <a href="https://drive.google.com/file/d/1rHEsZIQu7u-SD0wgHoB4j-Hm5Vecwomu/view?usp=sharing&t=28.02" target="_blank" style='color: #2B6CB0; font-size: 14px; font-weight: 700; text-decoration: none;'>
+                        🔗 คลิกที่นี่เพื่อเปิดดูวิดีโอเต็มจอใน Google Drive
+                    </a>
+                </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+            
+            b_left, b_mid, b_right = st.columns([1, 2, 1])
+            with b_mid:
+                if st.button("✕  ปิดวิดีโอ", key="btn_video_close", use_container_width=True):
+                    st.session_state.video_clicked = False
+                    st.rerun()
+
     if st.session_state.menu_open:
         st.markdown('<div class="floating-menu">', unsafe_allow_html=True)
         st.subheader("เมนูหลัก")
