@@ -1365,23 +1365,7 @@ if st.session_state.current_page == "🏠 หน้าแรก":
                 </div>
             """, unsafe_allow_html=True)
             
-            # ปุ่มเปิดดูวิดีโอ (จัดกึ่งกลางและปรับสัดส่วนความกว้างให้สวยงามพอดี ไม่ยาวจนเกินไป)
-            b_left, b_mid, b_right = st.columns([0.8, 2.5, 0.8])
-            with b_mid:
-                if st.button("▶  คลิกเพื่อรับชมวิดีโอ", key="btn_video_action", use_container_width=True):
-                    st.session_state.video_clicked = True
-                    st.rerun()
-        else:
-            st.video("Clustering.mp4")
-            st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
             
-            # ปุ่มปิดวิดีโอ
-            b_left, b_mid, b_right = st.columns([1, 2, 1])
-            with b_mid:
-                if st.button("✕  ปิดวิดีโอ", key="btn_video_close", use_container_width=True):
-                    st.session_state.video_clicked = False
-                    st.rerun()
-
     if st.session_state.menu_open:
         st.markdown('<div class="floating-menu">', unsafe_allow_html=True)
         st.subheader("เมนูหลัก")
@@ -2605,7 +2589,7 @@ elif st.session_state.current_page == "คู่มือ":
         st.markdown(f'''
         <div class="a4-paper-container">
             <div style="text-align: center; margin-bottom: 20px;">
-                <h2 style="color: #1A365D; font-size: 24px; font-weight: 900; margin: 0;">เอกสาร: บทที่ 1.pdf</h2>
+                <h2 style="color: #1A365D; font-size: 24px; font-weight: 900; margin: 0;">เอกสาร: คู่มือการใช้งาน</h2>
             </div>
             <embed src="data:application/pdf;base64,{base64_pdf}" width="100%" height="800px" type="application/pdf">
         </div>
